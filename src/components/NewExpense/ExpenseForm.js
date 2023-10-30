@@ -3,6 +3,8 @@ import React, {useState} from "react";
 import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
+    //setting up Sates for the input values
+    // const[the default entered Title, the function that will read the input and set it as the new title] = useState('');
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
@@ -22,12 +24,14 @@ const ExpenseForm = (props) => {
     const submitHandler = (event) => {
         //calling preventDefault method, so no request is send and page is not being reloaded
         event.preventDefault();
-
+        //creating an object from the entered form input values
         const expenseData = {
             title: enteredTitle,
             amount: enteredAmount,
             date: new Date(enteredDate)
         }
+
+        //passing the 'expenseData'-object through props to the parent component
         props.onSaveExpenseData(expenseData);
         setEnteredTitle('');
         setEnteredAmount('');
@@ -35,14 +39,16 @@ const ExpenseForm = (props) => {
     };
 
     return(
-    // adding onSubmit to submit the whole form
+    // adding onSubmit function to submit the whole form and save the input values in an object
     <form onSubmit={submitHandler}>
         <div className="new-expense__controls">
             <div className="new-expense__control">
                 <label>Title</label>
                 <input 
-                    type='text' 
+                    type='text'
+                    //value to reset the input field to '' after submission 
                     value={enteredTitle}
+                    //onChange calls the function below and sets a new value
                     onChange={titleChangeHandler}/>
             </div>
             <div className="new-expense__control">
