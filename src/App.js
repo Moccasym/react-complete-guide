@@ -27,14 +27,20 @@ const App = () => {
   ]);
 
   const addExpense = (newEntry) => {
-    setExpenses([...expenses, newEntry]);
-    console.log(newEntry);
+    setExpenses((prevExpenses) =>{ 
+      return[newEntry, ...expenses]
+    });
   }
+
+  // const compareDates = (date) => {
+  //   return date === new Date(2021)
+  // }
 
   return (
     <div>
       <NewExpense onNewExpense={addExpense}/>
-      <Expenses items={expenses} />
+      <Expenses items={expenses
+      } />
     </div>
   );
 }
