@@ -3,6 +3,16 @@ import React, {useState} from "react";
 import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
+    //to make the form invisible in the beginning
+    const [isFormVisible, setIsFormVisible] = useState(false);
+
+    const showFormHandler = () => {
+        setIsFormVisible(true);
+    };
+
+    const hideFormHandler = () => {
+        setIsFormVisible(false);
+    }
     //setting up Sates for the input values
     // const[the default entered Title, the function that will read the input and set it as the new title] = useState('');
     const [enteredTitle, setEnteredTitle] = useState('');
@@ -36,10 +46,17 @@ const ExpenseForm = (props) => {
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate('');
+        hideFormHandler();
     };
+
+
+
+
 
     return(
     // adding onSubmit function to submit the whole form and save the input values in an object
+    <div>
+    {isFormVisible ? (
     <form onSubmit={submitHandler}>
         <div className="new-expense__controls">
             <div className="new-expense__control">
@@ -71,9 +88,14 @@ const ExpenseForm = (props) => {
             </div>
         </div>
         <div className="new-expense__actions">
+            <button onClick={hideFormHandler} type='cancel'>Cancel</button>
             <button type='submit'>Add Expense</button>
         </div>
     </form>
+    ) : (
+        <button onClick={showFormHandler}>Add New Expense</button>
+    )}
+    </div>
     );
 };
 
