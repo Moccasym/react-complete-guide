@@ -37,7 +37,7 @@ const ExpenseForm = (props) => {
         //creating an object from the entered form input values
         const expenseData = {
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: +enteredAmount,
             date: new Date(enteredDate)
         }
 
