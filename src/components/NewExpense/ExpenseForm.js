@@ -49,10 +49,6 @@ const ExpenseForm = (props) => {
         hideFormHandler();
     };
 
-
-
-
-
     return(
     // adding onSubmit function to submit the whole form and save the input values in an object
     <div>

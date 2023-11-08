@@ -32,10 +32,6 @@ const App = () => {
     });
   }
 
-  // const compareDates = (date) => {
-  //   return date === new Date(2021)
-  // }
-
   return (
     <div>
       <NewExpense onNewExpense={addExpense}/>
